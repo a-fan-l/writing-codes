@@ -7,7 +7,9 @@ export type ImmerHooks<S> = [S]
 export type DraftFunction<S> = (draft: Draft<S>) => void
 
 // 函数签名
-function useImmer<T = unknown>(initialValue: T) {
+export function useImmer<S = unknown>(initialValue: S | (() => S)): ImmerHooks<S>;
+
+export function useImmer<T = unknown>(initialValue: T) {
     // 1. 原来初始化的对象不能修改，freeze 冻结
     const [val, updateVal] = useState(() => freeze(typeof initialValue === 'function' ? initialValue() : initialValue, true))
     
@@ -23,5 +25,3 @@ function useImmer<T = unknown>(initialValue: T) {
         }, [])
     ]
 }
-
-export default useImmer;
