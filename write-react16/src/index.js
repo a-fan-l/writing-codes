@@ -1,14 +1,7 @@
-import React from 'react';
+import React from '../react';
 
-const element = <h1 title="hello">Hello, world!</h1>
-
-const node = document.createElement(element.type);
-node['title'] = element.props.title;
-
-const text = document.createTextNode('');
-text['nodeValue'] = element.props.children;
-
-node.appendChild(text);
+const element = <div><h1 title="hello">Hello, world!!!</h1><a href='#'>link</a></div>
+console.log(element, 'element');
 
 const container = document.getElementById('root');
-container.appendChild(node);
+React.render(element, container);

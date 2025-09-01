@@ -18,6 +18,10 @@ module.exports = {
             },
         ],
     },
+    // 关闭压缩
+    optimization: {
+        minimize: false,
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'writing react16',
